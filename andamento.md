@@ -1,0 +1,1 @@
+- [x] 20/08/2024 - 05 Configurando o ESlint e o EditorConfig

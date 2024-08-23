@@ -1,2 +1,0 @@
-- [x] 20/08/2024 - M04/A05 Configurando o ESlint e o EditorConfig
-- [x] 22/08/2024 - M04/A08 Criando o Repository de Contatos

@@ -17,23 +17,49 @@ let contacts = [
 ];
 
 class ContactsRepository {
-    findAll() {
-        return new Promise((resolve) => {
-            resolve(contacts);
-        });
+    async findAll() {
+        return contacts;
     }
 
-    findById(id) {
-        return new Promise((resolve) => resolve(
-            contacts.find((contact) => contact.id === id),
+    async findById(id) {
+        return contacts.find((contact) => contact.id === id);
+    }
+
+    async findByEmail(email) {
+        return contacts.find((contact) => contact.email === email);
+    }
+
+    async create({ name, email, phone, category_id }) {
+        const newContact = {
+            id: v4(),
+            name,
+            email,
+            phone,
+            category_id,
+        };
+
+        contacts.push(newContact);
+        return newContact;
+    }
+
+    async update(id, { name, email, phone, category_id }) {
+        const updatedContact = {
+            id,
+            name,
+            email,
+            phone,
+            category_id,
+        };
+
+        contacts = contacts.map((contact) => (
+            contact.id === id ? updatedContact : contact
         ));
+
+        return updatedContact;
     }
 
-    delete(id) {
-        return new Promise((resolve) => {
-            contacts = contacts.filter((contact) => contact.id !== id);
-            resolve();
-        });
+    async delete(id) {
+        contacts = contacts.filter((contact) => contact.id !== id);
     }
 }
 
